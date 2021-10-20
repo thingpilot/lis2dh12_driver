@@ -1,23 +1,19 @@
 /**
-
 * @file    LIS2DH12.cpp
 * @version 0.0.1
 * @author  Jurica Resetar, Rafaella Neofytou (changes)
 * @brief   C++ file of the Lis2dh12 driver module. Changed to fit cav project
-* 
 */
  
 #include "Lis2dh12.h"
 #include "Lis2dh12_regs.h"
-#include "HeaderFile.h"
 #include <cstdint>
 
 uint8_t success = SUCCESS; /* 0 on success (ack), non-0 on failure (nack) */
 
-
-Lis2dh12::Lis2dh12(I2C *i2c_, char address) : i2c(i2c_, address){
+Lis2dh12::Lis2dh12(I2C *i2c_, char address) : i2c(i2c_, address)
+{
 }
- 
 uint8_t Lis2dh12::whoIAm()
 {
     char regAddr = (char)WHO_AM_I;
@@ -359,7 +355,7 @@ uint8_t Lis2dh12::ThresholdConfigure(char u8Level, char u8Duration, char u8Mode)
 	
 
 	// Enable interrupt on INT1 pin
-	boInterruptEvent = false;
+//	boInterruptEvent = false;
     copy = LIR_INT1;
     i2c.writeToReg((char)CTRL_REG5, &copy, 1);
 	
